@@ -7,9 +7,9 @@ module DisplayCase
     def self.applicable_to?(object, context=nil)
       # ActiveRecord::Relation, surprisingly, is not Enumerable. But it
       # behaves sufficiently similarly for our purposes.
-      check_for = [object, 'Enumerable']
+      check_for = ['Enumerable']
       check_for << 'ActiveRecord::Relation' if defined?(ActiveRecord)
-      object_is_any_of? check_for
+      object_is_any_of? object, check_for
     end
 
     # Wrap an Enumerable method which returns another collection
